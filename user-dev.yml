@@ -1,0 +1,27 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: microservice-user
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot?characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password:
+  jpa:
+    show-sql: true #是否打印数据库语句
+    generate-ddl: true #是否自动建表
+    database: mysql #连接什么数据库
+    #eureka客户端配置
+eureka:
+  client:
+    register-with-eureka: true #是否需要注册大eureka
+    fetch-registry: true #是否需要从eureka获取注册列表
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka
+  instance:
+    prefer-ip-address: true #优先以ip地址方式进行注册
+    #心跳间隔--服务提供者会每隔一段时间向服务器发送一次信号，表示自己还“活着”,默认为30秒,定义在服务提供者
+    lease-renewal-interval-in-seconds: 30
+    #服务器若在指定时间内没有向服务器发送信号，则该服务失效，默认为90秒
+    lease-expiration-duration-in-seconds: 90

@@ -1,0 +1,20 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: microservice-movice
+eureka:
+  client:
+    register-with-eureka: true #是否需要注册大eureka
+    fetch-registry: true #是否需要从eureka获取注册列表
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka
+  instance:
+    prefer-ip-address: true #优先以ip地址方式进行注册
+feign:
+  hystrix:
+    enabled: true
+microservice-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #修改Ribbon的负载均衡算法,默认为轮流选择算法，修改为随机算法
+
